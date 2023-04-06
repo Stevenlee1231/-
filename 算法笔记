@@ -1,0 +1,5 @@
+2023/4/6
+n进制的通用写法：
+bits = abs(num % n)
+num = (num - bits) / n 
+埃式筛:
