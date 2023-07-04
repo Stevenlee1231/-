@@ -1,0 +1,18 @@
+2023/05/21
+问题：浏览器无法解析从中文转换的Unicode
+问题原因：get提交对路径有长度要求
+解决问题：由于后端质疑使用get提交，因此让他对路径设置了英文名
+2023/6/25
+问题：刷新浏览器不退出登录，关闭浏览器也不退出登录。
+问题原因：
+之前同事开发时使用的local storage。local storage在浏览器关闭后依然存在，所以关闭浏览器后无法刷新登录状态。
+解决问题：
+将local storage改成session storage即可
+2023/7/4
+问题：导入图片时使用Vite无法打包
+问题原因：
+vite 官方默认的配置，如果资源文件在assets文件夹打包后会把图片名加上 hash值
+但是直接通过 :src="imgSrc"方式引入并不会在打包的时候解析，导致开发环境可以正常引入，打包后却不能显示的问题
+解决问题：
+import homeIcon from '@/assets/images/home/home_icon.png'
+<img :src="homeIcon" /> （原本是直接引用的home_icon.png，不对）
